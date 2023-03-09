@@ -1,0 +1,99 @@
+.body
+{
+    height: 100vh
+}
+
+.header{
+    height: 8%;
+}
+
+
+.container{
+    padding: 0;
+    background: #7494c0;
+ 
+
+    position: -webkit-sticky;
+    position: sticky;
+    top:0;
+    height: 70%;
+    overflow-y: scroll;
+    overflow-x:hidden
+}
+
+.myself_container{
+        position: relative;
+        display: block;
+        margin: 1%;
+        padding: 0 1%;
+        max-width: 95%;
+        float: right;
+        margin-right: 5px;
+        clear: both;
+}
+
+.ai_container {
+    display: inline-block;
+    position: relative;
+    display: block;
+    margin: 1%;
+    padding: 0 1%;
+    max-width: 90%;
+    clear: both;
+}
+
+.myself_text{
+    padding: 10px;
+    border-radius: 20px;
+    background-color: #8de055;
+    /* 吹き出し背景色 自分 */
+    color: #000000;
+    /* トーク文字色 自分 */
+    font-size: 11px;
+    /* トーク文字サイズ 自分 */
+}
+
+.myself_text::after{
+    content: '';
+    position: absolute;
+    display: block;
+    right: -1.5%;
+    padding: -60%;
+    top: -10%;
+    border-left: 20px solid #8de055;
+    /* 吹き出し枠線色 自分 */
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    transform: rotate(-35deg);
+    -webkit-transform: rotate(-35deg);
+}
+
+.ai_text {
+    padding: 10px;
+    border-radius: 20px;
+    background-color: #FFFF;
+    /* 吹き出し背景色 自分 */
+    color: #000000;
+    /* トーク文字色 自分 */
+    font-size: 11px;
+    /* トーク文字サイズ 自分 */
+}
+
+.ai_text::after {
+    content: '';
+    position: absolute;
+    display: block;
+    left: 1%;
+    padding: -60%;
+    top: -1%;
+    border-left: 20px solid #FFFF;
+    /* 吹き出し枠線色 自分 */
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    transform: rotate(-35deg);
+    -webkit-transform: rotate(-35deg);
+}
+
+.input_container{
+    margin: 1% 0;
+}
