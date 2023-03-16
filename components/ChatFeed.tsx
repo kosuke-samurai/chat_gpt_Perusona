@@ -2,6 +2,9 @@ import React, {useState, useMemo, useEffect} from 'react'
 import Image from 'next/image'
 import axios from 'axios'
 import { Button } from '@mui/material';
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import MenuItem from '@mui/material/MenuItem';
 import { DrawerAppBar } from '../components/Header';
 
 import classes from '../components/ChatFeed.module.css'
@@ -69,6 +72,44 @@ export const ChatFeed = () => {
     console.log(newPastChat);
 
 
+
+    const currencies = [
+  {
+    value: 'chat GPT-3.5',
+    label: '相手のキャラ(ペルソナ)を選ぶ',
+  },
+  {
+    value: '',
+    label: 'デフォルト',
+  },
+  {
+    value: 'あなたは東京に住んでいる30歳の独身男性です。東京に住んでいる30歳の独身男性の口調で回答してください。第一人称はボクです。',
+    label: '東京在住、30歳の独身男性',
+  },
+  {
+    value: 'あなたは東京に住んでいる30歳の独身女性です。東京に住んでいる30歳の独身女性の口調で回答してください。第一人称はワタシです。',
+    label: '東京在住、30歳の独身女性',
+        },
+  {
+    value: 'あなたはスパイファミリーのアーニャです。アーニャの口調で回答してください。第一人称はアーニャです。',
+    label: 'アーニャ',
+        },
+  {
+    value: 'あなたはドラゴンボールの孫悟空です。悟空の口調で回答してください。第一人称はオラです。',
+    label: '孫悟空',
+        },
+  {
+    value: 'あなたはドラえもんです。ドラえもんの口調で回答してください。第一人称はボクです。',
+    label: 'ドラえもん',
+  },
+    ];
+    
+    const [currency, setCurrency] = React.useState('chat GPT-3.5');
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setCurrency(event.target.value);
+  };
+
     return (
         <>
             <div className='h-screen sm:px-64 sm:h-screen'>
@@ -97,33 +138,40 @@ export const ChatFeed = () => {
                         </div>
                         
                         )
-                }) : <div><p>値が空です</p></div>}
+                }) : null}
                 </div> 
        
-        <div className={classes.input_container}>
-                    <textarea
-                        name="" id="reqtext"
-                        className='block p-2.5 w-full text-xs text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
-                    placeholder='文字を入力'></textarea>
-                <label htmlFor="reqchara" className='sr-only'>キャラを設定する</label>
-                    <select name="" id="reqchara"
-                    className='bg-gray-50 border border-gray-300 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'>
-                    <option value="" selected>相手のキャラ(ペルソナ)を選ぶ</option>    
-                    <option value="">デフォルト</option>
-                    <option value="あなたは東京に住んでいる30歳の独身男性です。東京に住んでいる30歳の独身男性の口調で回答してください。第一人称はボクです。">東京在住、30歳の独身男性</option>
-                    <option value="あなたは東京に住んでいる30歳の独身女性です。東京に住んでいる30歳の独身女性の口調で回答してください。第一人称はワタシです。">東京在住、30歳の独身女性</option>
-                    <option value="あなたはスパイファミリーのアーニャです。アーニャの口調で回答してください。第一人称はアーニャです。">アーニャ</option>
-                    <option value="あなたはドラゴンボールの孫悟空です。悟空の口調で回答してください。第一人称はオラです。">孫悟空</option>
-                    <option value="あなたはドラえもんです。ドラえもんの口調で回答してください。第一人称はボクです。">ドラえもん</option>
-
+                <div className={classes.input_container}>
+                    
+                    
+                    <TextField
+                            id="reqtext"
+                            label="質問入力"
+                        multiline
+                        fullWidth
+                            rows={1}
+                        defaultValue=''
+                        
+                        />
+            
+                    <label className="sr-only">キャラを選択</label>
+                    <select id="reqchara" className="block py-2.5 px-0 my-1.5 w-full text-xs text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
+                              {currencies.map((option) => (
+                        
+                            <option key={option.value} value={option.value}>{option.label}</option>
+                                
+                              ))}
                     </select>
+ 
+
+                    
                     <div className='flex justify-center'>
                 <Button
                     onClick={() => {
                         chatAI();
                         
                         }}
-                        className='text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-xs px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
+                        className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded text-xs'
                     >送信
                         </Button>
                         </div>

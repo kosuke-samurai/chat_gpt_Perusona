@@ -16,7 +16,7 @@
     position: -webkit-sticky;
     position: sticky;
     top:0;
-    height: 70%;
+    height: 70vh;
     overflow-y: scroll;
     overflow-x:hidden
 }
@@ -57,9 +57,9 @@
     content: '';
     position: absolute;
     display: block;
-    right: -1.5%;
-    padding: -60%;
-    top: -10%;
+    right: 5%;
+    padding: -90%;
+    top: -1%;
     border-left: 20px solid #8de055;
     /* 吹き出し枠線色 自分 */
     border-top: 10px solid transparent;
@@ -95,5 +95,23 @@
 }
 
 .input_container{
-    margin: 1% 0;
+    margin: 3% 2%;
+    height:20vh
+}
+
+@media screen and (max-width: 480px) {
+.myself_text::after {
+    content: '';
+    position: absolute;
+    display: block;
+    right: -6%;
+    padding: -90%;
+    top: -1%;
+    border-left: 20px solid #8de055;
+    /* 吹き出し枠線色 自分 */
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    transform: rotate(-35deg);
+    -webkit-transform: rotate(-35deg);
+}
 }

@@ -74,8 +74,8 @@ export const DrawerAppBar = (props: Props) =>{
             component="div"
             sx={{ flexGrow: 1,}}
           >
-            <h1 className='flex justify-center text-base'>ペルソナ作り × Chat GPT</h1>
-            <p className='flex justify-center text-xs'>ペルソナに設定したキャラと会話して実像を作る</p>
+            <h1 className='flex justify-center text-base'>Chat GPT × オールスター</h1>
+            <p className='flex justify-center text-xs'>設定したキャラと会話し放題</p>
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
             {navItems.map((item) => (
